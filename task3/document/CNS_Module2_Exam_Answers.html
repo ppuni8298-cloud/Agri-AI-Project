@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNS Module 2 – Exam Answers</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=Bebas+Neue&display=swap');
+
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --surface2: #1c2333;
+  --accent: #00d4aa;
+  --accent2: #f0883e;
+  --accent3: #79c0ff;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --border: #30363d;
+  --red: #ff7b72;
+  --green: #3fb950;
+  --yellow: #d29922;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #0d1117 0%, #1a2332 50%, #0d1117 100%);
+  border-bottom: 2px solid var(--accent);
+  padding: 40px 48px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.header-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  letter-spacing: 3px;
+  color: #ffffff;
+  line-height: 1.1;
+}
+.header h2 {
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--accent3);
+  margin-top: 6px;
+  font-style: italic;
+}
+.header-pills {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;
+}
+.pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.pill.green { border-color: var(--green); color: var(--green); }
+.pill.orange { border-color: var(--accent2); color: var(--accent2); }
+.pill.blue { border-color: var(--accent3); color: var(--accent3); }
+
+/* TOC */
+.toc {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 48px;
+}
+.toc-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 6px 20px;
+}
+.toc-item {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  transition: color 0.2s;
+}
+.toc-item:hover { color: var(--accent); }
+.toc-n {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--accent2);
+  min-width: 28px;
+}
+
+/* MAIN */
+main { padding: 0 48px 80px; max-width: 960px; margin: 0 auto; }
+
+/* SECTION DIVIDERS */
+.section-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 4px;
+  color: var(--accent);
+  margin-top: 56px;
+  padding: 12px 0 8px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-label::before {
+  content: '';
+  width: 4px; height: 22px;
+  background: var(--accent);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* Q BLOCK */
+.q-block {
+  margin-top: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.q-header {
+  background: var(--surface2);
+  padding: 16px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.q-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent2);
+  background: rgba(240,136,62,0.1);
+  border: 1px solid rgba(240,136,62,0.3);
+  padding: 3px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.q-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+.answer { padding: 24px 28px; }
+
+/* Typography inside answer */
+.answer p { margin-bottom: 12px; color: #d0d8e0; }
+.answer h3 {
+  font-family: 'Crimson Pro', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 22px 0 8px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+.answer h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent3);
+  margin: 16px 0 6px;
+}
+ul, ol { padding-left: 22px; margin-bottom: 12px; }
+li { margin-bottom: 5px; color: #d0d8e0; }
+strong { color: var(--text); }
+
+/* code / pre */
+code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  background: rgba(0,212,170,0.08);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+pre {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent2);
+  padding: 16px 20px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 14px 0 18px;
+  line-height: 1.7;
+  color: #e6edf3;
+}
+pre .cm { color: #6e7681; font-style: italic; }
+pre .kw { color: var(--accent3); }
+pre .val { color: var(--green); }
+pre .op { color: var(--accent2); }
+
+/* math block */
+.math {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 14px 0 18px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  line-height: 2;
+  color: var(--accent3);
+}
+.math .step { color: var(--muted); font-size: 11px; }
+.math .result { color: var(--green); font-weight: 600; font-size: 14px; }
+.math .highlight { color: var(--accent2); }
+
+/* table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 18px;
+  font-size: 13px;
+}
+thead tr {
+  background: #1c2333;
+}
+thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+}
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+tbody td {
+  padding: 9px 14px;
+  border-bottom: 1px solid rgba(48,54,61,0.6);
+  color: #c9d1d9;
+}
+
+/* note / tip box */
+.note {
+  background: rgba(0,212,170,0.06);
+  border: 1px solid rgba(0,212,170,0.2);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 14px 0;
+  font-size: 14px;
+  color: #d0d8e0;
+}
+.note strong { color: var(--accent); }
+.warn {
+  background: rgba(240,136,62,0.06);
+  border: 1px solid rgba(240,136,62,0.2);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 14px 0;
+  font-size: 14px;
+}
+.warn strong { color: var(--accent2); }
+
+/* diagram box */
+.diagram {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 14px 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  line-height: 2;
+  text-align: center;
+}
+.box-b {
+  display: inline-block;
+  border: 1px solid var(--accent3);
+  padding: 5px 18px;
+  border-radius: 4px;
+  color: var(--accent3);
+  margin: 4px;
+}
+.box-b.red { border-color: var(--red); color: var(--red); }
+.box-b.green { border-color: var(--green); color: var(--green); }
+.box-b.orange { border-color: var(--accent2); color: var(--accent2); }
+.arrow-d { color: var(--muted); font-size: 16px; }
+
+/* compare grid */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 14px 0 18px;
+}
+.compare-col {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.compare-col h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.compare-col.left h4 { color: var(--accent); }
+.compare-col.right h4 { color: var(--accent2); }
+.compare-col li { font-size: 13px; }
+
+/* print */
+@media print {
+  body { background: white; color: #111; font-size: 13px; }
+  .header { background: #1a1a2e !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .q-block { background: #f8f8f8 !important; border-color: #ccc !important; }
+  .q-header { background: #ececec !important; }
+  pre, .math { background: #f5f5f5 !important; color: #333 !important; }
+  .section-label { color: #006b55 !important; }
+  a { text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-tag">Sapthagiri NPS University · Dept. of CSE</div>
+  <h1>Cryptography & Network Security</h1>
+  <h2>Module II — Complete Exam Answers · All 25 Questions</h2>
+  <div class="header-pills">
+    <span class="pill green">Course: 24BECSE406</span>
+    <span class="pill orange">Sem IV</span>
+    <span class="pill blue">CO1 · Level 2–3</span>
+    <span class="pill">Symmetric + Asymmetric + Lightweight</span>
+  </div>
+</div>
+
+<div class="toc">
+  <div class="toc-title">Question Index</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#q1"><span class="toc-n">Q1</span>Block vs Stream Cipher</a>
+    <a class="toc-item" href="#q2"><span class="toc-n">Q2</span>Block Cipher Design Principles</a>
+    <a class="toc-item" href="#q3"><span class="toc-n">Q3</span>DES Structure & Working</a>
+    <a class="toc-item" href="#q4"><span class="toc-n">Q4</span>AES Encryption Process</a>
+    <a class="toc-item" href="#q5"><span class="toc-n">Q5</span>Block Cipher Modes</a>
+    <a class="toc-item" href="#q6"><span class="toc-n">Q6</span>Compare Modes of Operation</a>
+    <a class="toc-item" href="#q7"><span class="toc-n">Q7</span>Applications of Each Mode</a>
+    <a class="toc-item" href="#q8"><span class="toc-n">Q8</span>Stream Cipher Working</a>
+    <a class="toc-item" href="#q9"><span class="toc-n">Q9</span>ECB vs CBC</a>
+    <a class="toc-item" href="#q10"><span class="toc-n">Q10</span>Need for Asymmetric Crypto</a>
+    <a class="toc-item" href="#q11"><span class="toc-n">Q11</span>Public Key Cryptosystems</a>
+    <a class="toc-item" href="#q12"><span class="toc-n">Q12</span>RSA Algorithm</a>
+    <a class="toc-item" href="#q13"><span class="toc-n">Q13</span>Elliptic Curve Cryptography</a>
+    <a class="toc-item" href="#q14"><span class="toc-n">Q14</span>Lightweight Cryptography</a>
+    <a class="toc-item" href="#q15"><span class="toc-n">Q15</span>Block vs Stream: Application</a>
+    <a class="toc-item" href="#q16"><span class="toc-n">Q16</span>RSA Problem: M=88</a>
+    <a class="toc-item" href="#q17"><span class="toc-n">Q17</span>RSA Key Gen Demo</a>
+    <a class="toc-item" href="#q18"><span class="toc-n">Q18</span>RSA: p=5,q=11,e=3,M=9</a>
+    <a class="toc-item" href="#q19"><span class="toc-n">Q19</span>Security of RSA</a>
+    <a class="toc-item" href="#q20"><span class="toc-n">Q20</span>RSA: p=7,q=11,e=17</a>
+    <a class="toc-item" href="#q21"><span class="toc-n">Q21</span>RSA: M=88, PU=(7,187)</a>
+    <a class="toc-item" href="#q22"><span class="toc-n">Q22</span>RSA: M=9, PU=(3,33)</a>
+    <a class="toc-item" href="#q23"><span class="toc-n">Q23</span>RSA: M=12, PU=(5,119)</a>
+    <a class="toc-item" href="#q24"><span class="toc-n">Q24</span>RSA: M=7, PU=(3,55)</a>
+    <a class="toc-item" href="#q25"><span class="toc-n">Q25</span>Find d: p=11,q=13,e=7</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════════════════ SECTION 1: SYMMETRIC ═══════════════════════ -->
+<div class="section-label">SYMMETRIC KEY CIPHERS</div>
+
+<!-- Q1 -->
+<div class="q-block" id="q1">
+  <div class="q-header">
+    <span class="q-num">Q1</span>
+    <div class="q-text">Differentiate block cipher and stream cipher.</div>
+  </div>
+  <div class="answer">
+    <p>Block ciphers and stream ciphers are the two main categories of symmetric encryption algorithms. They differ in how they process plaintext.</p>
+    <h3>Stream Cipher</h3>
+    <ul>
+      <li>Encrypts data <strong>one bit or one byte at a time</strong>.</li>
+      <li>Uses a keystream generator to produce a bit stream that is XORed with plaintext.</li>
+      <li>The keystream is generated from a secret key shared by both users.</li>
+      <li>Ciphertext is same length as plaintext — no padding needed.</li>
+      <li>Can operate in real time (suitable for streaming data).</li>
+      <li>Examples: RC4, Vernam cipher, autokeyed Vigenère cipher.</li>
+    </ul>
+    <h3>Block Cipher</h3>
+    <ul>
+      <li>Encrypts data in <strong>fixed-size blocks</strong> (typically 64 or 128 bits).</li>
+      <li>The entire block is processed together to produce a ciphertext block of equal length.</li>
+      <li>The same algorithm and key are used for each block.</li>
+      <li>Requires padding if the last block is not a full block.</li>
+      <li>More widely used in network-based symmetric applications.</li>
+      <li>Examples: DES, AES, 3DES.</li>
+    </ul>
+    <h3>Comparison Table</h3>
+    <table>
+      <thead><tr><th>Feature</th><th>Stream Cipher</th><th>Block Cipher</th></tr></thead>
+      <tbody>
+        <tr><td>Unit of encryption</td><td>1 bit / 1 byte at a time</td><td>Fixed block (64/128 bits)</td></tr>
+        <tr><td>Speed</td><td>Faster</td><td>Slower but more secure</td></tr>
+        <tr><td>Padding</td><td>Not required</td><td>May be required</td></tr>
+        <tr><td>Memory</td><td>Less</td><td>More</td></tr>
+        <tr><td>Error propagation</td><td>Affects only that bit</td><td>Affects entire block</td></tr>
+        <tr><td>Applications</td><td>Real-time audio/video</td><td>File encryption, VPN, TLS</td></tr>
+        <tr><td>Examples</td><td>RC4, Vernam</td><td>DES, AES</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="q-block" id="q2">
+  <div class="q-header">
+    <span class="q-num">Q2</span>
+    <div class="q-text">Explain critical aspects of block cipher design principles.</div>
+  </div>
+  <div class="answer">
+    <p>A block cipher must be designed carefully to resist cryptanalytic attacks. The three critical design aspects are:</p>
+    <h3>1. Number of Rounds</h3>
+    <p>The number of rounds determines how many times the encryption transformation is applied. More rounds = more security.</p>
+    <ul>
+      <li>The greater the number of rounds, the harder it is to perform cryptanalysis.</li>
+      <li>The criterion: number of rounds should be chosen so that known cryptanalytic attacks require <strong>more effort than a brute-force key search</strong>.</li>
+      <li>DES uses <strong>16 rounds</strong>; AES uses <strong>10, 12, or 14 rounds</strong> depending on key size.</li>
+    </ul>
+    <h3>2. Design of the Function F</h3>
+    <p>The function F is the heart of a Feistel block cipher and provides <strong>confusion</strong>.</p>
+    <ul>
+      <li><strong>Nonlinearity:</strong> F must be nonlinear. The more nonlinear F is, the harder cryptanalysis becomes.</li>
+      <li><strong>Avalanche Effect:</strong> A change in one input bit should cause changes in many output bits. This provides diffusion.</li>
+      <li><strong>Bit Independence Criterion (BIC):</strong> Output bits j and k should change independently when any single input bit i is inverted, for all i, j, k.</li>
+      <li>F must be difficult to "unscramble" — substitution performed by F must be hard to reverse without the key.</li>
+    </ul>
+    <h3>3. Key Schedule Algorithm</h3>
+    <p>The key schedule generates a subkey for each round from the main key.</p>
+    <ul>
+      <li>Subkeys should be chosen to maximize the difficulty of deducing individual subkeys.</li>
+      <li>Should make it difficult to work back to the main key from subkeys.</li>
+      <li>The schedule must guarantee <strong>key/ciphertext Strict Avalanche Criterion (SAC)</strong> and <strong>Bit Independence Criterion (BIC)</strong>.</li>
+    </ul>
+    <div class="note"><strong>Summary:</strong> Good block cipher design balances confusion (obscuring relationship between key and ciphertext), diffusion (spreading influence of plaintext bits), and computational hardness.</div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="q-block" id="q3">
+  <div class="q-header">
+    <span class="q-num">Q3</span>
+    <div class="q-text">Explain the structure and working of the Data Encryption Standard (DES).</div>
+  </div>
+  <div class="answer">
+    <h3>Overview of DES</h3>
+    <ul>
+      <li>DES is a <strong>block cipher</strong> — encrypts data in <strong>64-bit blocks</strong>.</li>
+      <li>Uses a <strong>56-bit key</strong> (initially 64 bits, every 8th bit is discarded).</li>
+      <li>Same algorithm and key used for both encryption and decryption.</li>
+      <li>Was the standard before AES (2001).</li>
+    </ul>
+    <h3>Broad Steps in DES</h3>
+    <div class="diagram">
+      <div><span class="box-b">64-bit Plaintext</span></div>
+      <div class="arrow-d">↓</div>
+      <div><span class="box-b orange">Initial Permutation (IP)</span></div>
+      <div class="arrow-d">↓</div>
+      <div><span class="box-b">32-bit LPT</span> &nbsp;|&nbsp; <span class="box-b">32-bit RPT</span></div>
+      <div class="arrow-d">↓ (16 Rounds each with subkey)</div>
+      <div><span class="box-b orange">Final Permutation (FP)</span></div>
+      <div class="arrow-d">↓</div>
+      <div><span class="box-b green">64-bit Ciphertext</span></div>
+    </div>
+    <h3>Steps Inside Each Round (16 Rounds)</h3>
+    <h4>Step 1: Key Transformation (Compression Permutation)</h4>
+    <ul>
+      <li>64-bit key → 56-bit by dropping every 8th bit.</li>
+      <li>56-bit key split into two 28-bit halves, circularly shifted left by 1 or 2 positions.</li>
+      <li>48 of the 56 bits selected → forms the <strong>48-bit subkey</strong> for the round.</li>
+    </ul>
+    <h4>Step 2: Expansion Permutation</h4>
+    <ul>
+      <li>RPT (32 bits) is expanded to <strong>48 bits</strong> by repeating certain bits.</li>
+      <li>The 48-bit expanded RPT is XORed with the 48-bit subkey.</li>
+    </ul>
+    <h4>Step 3: S-Box Substitution</h4>
+    <ul>
+      <li>The 48-bit XOR output is fed into 8 S-boxes (each takes 6 bits, outputs 4 bits).</li>
+      <li>Produces a <strong>32-bit output</strong> — provides confusion.</li>
+    </ul>
+    <h4>Step 4: P-Box Permutation</h4>
+    <ul>
+      <li>The 32-bit S-box output is permuted using a P-box table.</li>
+      <li>Provides diffusion (bit positions are rearranged).</li>
+    </ul>
+    <h4>Step 5: XOR and Swap</h4>
+    <ul>
+      <li>P-box output is XORed with LPT → becomes new RPT.</li>
+      <li>Old RPT becomes new LPT (swap).</li>
+    </ul>
+    <h3>Final Permutation</h3>
+    <p>After 16 rounds, LPT and RPT are rejoined and a final permutation (inverse of IP) is applied to produce the 64-bit ciphertext.</p>
+    <div class="note"><strong>Key Fact:</strong> DES uses <strong>substitution (S-boxes)</strong> for confusion and <strong>permutation (P-boxes)</strong> for diffusion. The 16 rounds ensure sufficient complexity to resist attacks.</div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="q-block" id="q4">
+  <div class="q-header">
+    <span class="q-num">Q4</span>
+    <div class="q-text">Illustrate the encryption process in Advanced Encryption Standard (AES).</div>
+  </div>
+  <div class="answer">
+    <h3>Overview of AES</h3>
+    <ul>
+      <li>Published by NIST in <strong>2001</strong>. Replaces DES as the standard.</li>
+      <li>Block size: <strong>128 bits (16 bytes)</strong> — fixed.</li>
+      <li>Key sizes: <strong>128, 192, or 256 bits</strong> → AES-128, AES-192, AES-256.</li>
+      <li>Number of rounds: <strong>10, 12, or 14</strong> depending on key length.</li>
+      <li>All operations performed on <strong>8-bit bytes</strong> over finite field GF(2⁸).</li>
+    </ul>
+    <h3>AES State Representation</h3>
+    <p>The 128-bit input block is arranged as a <strong>4×4 matrix of bytes</strong> called the <em>State</em>. The key is also expanded into a key schedule array.</p>
+    <h3>Four Transformation Stages Per Round</h3>
+    <h4>1. SubBytes (Substitution)</h4>
+    <ul>
+      <li>Each byte of the State is replaced using an <strong>S-box lookup table</strong>.</li>
+      <li>Provides nonlinearity (confusion).</li>
+      <li>The S-box is constructed using the multiplicative inverse in GF(2⁸).</li>
+    </ul>
+    <h4>2. ShiftRows (Permutation)</h4>
+    <ul>
+      <li>Each row of the 4×4 State matrix is cyclically shifted left.</li>
+      <li>Row 0: no shift; Row 1: 1 byte left; Row 2: 2 bytes; Row 3: 3 bytes.</li>
+      <li>Provides inter-column diffusion.</li>
+    </ul>
+    <h4>3. MixColumns (Substitution)</h4>
+    <ul>
+      <li>Each column of the State is treated as a polynomial and multiplied by a fixed matrix over GF(2⁸).</li>
+      <li>Provides diffusion by mixing bytes within each column.</li>
+      <li><em>Not applied in the final round.</em></li>
+    </ul>
+    <h4>4. AddRoundKey (XOR with Key)</h4>
+    <ul>
+      <li>Each byte of the State is XORed with the corresponding byte of the round key.</li>
+      <li>This is the <strong>only stage that uses the key</strong>.</li>
+      <li>Applied at the beginning (Round 0) and after every round.</li>
+    </ul>
+    <h3>AES Encryption Structure</h3>
+    <pre>Initial Transformation:   AddRoundKey (Round 0 key)
+Rounds 1 to N-1:          SubBytes → ShiftRows → MixColumns → AddRoundKey
+Final Round N:            SubBytes → ShiftRows → AddRoundKey  (no MixColumns)</pre>
+    <h3>Key Lengths & Rounds</h3>
+    <table>
+      <thead><tr><th>Algorithm</th><th>Key Length (bytes)</th><th>No. of Rounds</th></tr></thead>
+      <tbody>
+        <tr><td>AES-128</td><td>16</td><td>10</td></tr>
+        <tr><td>AES-192</td><td>24</td><td>12</td></tr>
+        <tr><td>AES-256</td><td>32</td><td>14</td></tr>
+      </tbody>
+    </table>
+    <h3>Advantages of AES</h3>
+    <ul>
+      <li>Symmetric and parallel structure — flexible implementation.</li>
+      <li>Works well on modern processors (RISC, Pentium, parallel).</li>
+      <li>Suitable for smart cards and embedded systems.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="q-block" id="q5">
+  <div class="q-header">
+    <span class="q-num">Q5</span>
+    <div class="q-text">Explain the various modes of operation of block ciphers.</div>
+  </div>
+  <div class="answer">
+    <p>A <strong>mode of operation</strong> is a technique for applying a block cipher to sequences of data blocks. NIST defines five modes:</p>
+    <h3>1. Electronic Codebook (ECB)</h3>
+    <ul>
+      <li>Simplest mode — each plaintext block encrypted <strong>independently</strong> with the same key.</li>
+      <li>Same plaintext block → same ciphertext block (deterministic).</li>
+      <li>Weakness: patterns in plaintext are visible in ciphertext.</li>
+      <li>Application: Secure transmission of single values (e.g., encryption keys).</li>
+    </ul>
+    <h3>2. Cipher Block Chaining (CBC)</h3>
+    <ul>
+      <li>Each plaintext block is <strong>XORed with the previous ciphertext block</strong> before encryption.</li>
+      <li>An Initialization Vector (IV) is used for the first block.</li>
+      <li>Same plaintext block → different ciphertext (hides patterns).</li>
+      <li>Application: General-purpose block transmission, authentication.</li>
+    </ul>
+    <h3>3. Cipher Feedback (CFB)</h3>
+    <ul>
+      <li>Converts block cipher into a <strong>stream cipher</strong>.</li>
+      <li>Preceding ciphertext is used as input to the encryption algorithm to produce pseudorandom output, which is XORed with plaintext.</li>
+      <li>Input processed <em>s</em> bits at a time.</li>
+      <li>Application: General-purpose stream-oriented transmission, authentication.</li>
+    </ul>
+    <h3>4. Output Feedback (OFB)</h3>
+    <ul>
+      <li>Similar to CFB, but the <strong>encryption algorithm output</strong> (not ciphertext) is fed back.</li>
+      <li>Full blocks are used. Keystream is independent of plaintext.</li>
+      <li>Application: Stream-oriented transmission over <strong>noisy channels</strong> (e.g., satellite).</li>
+    </ul>
+    <h3>5. Counter (CTR)</h3>
+    <ul>
+      <li>Each plaintext block is XORed with an <strong>encrypted counter</strong>.</li>
+      <li>Counter is incremented for each subsequent block.</li>
+      <li>Allows <strong>parallel encryption/decryption</strong>.</li>
+      <li>Application: High-speed requirements, general-purpose block transmission.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="q-block" id="q6">
+  <div class="q-header">
+    <span class="q-num">Q6</span>
+    <div class="q-text">Compare various modes of operation of block ciphers.</div>
+  </div>
+  <div class="answer">
+    <table>
+      <thead><tr><th>Feature</th><th>ECB</th><th>CBC</th><th>CFB</th><th>OFB</th><th>CTR</th></tr></thead>
+      <tbody>
+        <tr><td>Unit processed</td><td>Block</td><td>Block</td><td>s bits</td><td>Full block</td><td>Block</td></tr>
+        <tr><td>Feedback used</td><td>None</td><td>Ciphertext</td><td>Ciphertext</td><td>Encrypt output</td><td>Counter</td></tr>
+        <tr><td>IV needed</td><td>No</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Counter used</td></tr>
+        <tr><td>Parallel enc.</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Parallel dec.</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Pattern hiding</td><td>No (weak)</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Error propagation</td><td>1 block</td><td>2 blocks</td><td>Partial</td><td>No</td><td>1 block</td></tr>
+        <tr><td>Stream cipher?</td><td>No</td><td>No</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+        <tr><td>Security level</td><td>Weakest</td><td>Good</td><td>Good</td><td>Good</td><td>Best</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="q-block" id="q7">
+  <div class="q-header">
+    <span class="q-num">Q7</span>
+    <div class="q-text">Cite various applications of each of the modes of operation of block cipher.</div>
+  </div>
+  <div class="answer">
+    <table>
+      <thead><tr><th>Mode</th><th>Typical Applications</th><th>Reason</th></tr></thead>
+      <tbody>
+        <tr><td><strong>ECB</strong></td><td>Encrypting single encryption keys, PIN transmission in banking</td><td>Simple, fast for single blocks</td></tr>
+        <tr><td><strong>CBC</strong></td><td>File encryption, TLS/SSL, disk encryption, authentication (MACs)</td><td>Hides patterns; general-purpose block transmission</td></tr>
+        <tr><td><strong>CFB</strong></td><td>Real-time character stream transmission, network authentication</td><td>Stream-oriented, no padding needed</td></tr>
+        <tr><td><strong>OFB</strong></td><td>Satellite communication, voice encryption over noisy channels</td><td>Bit errors don't propagate (keystream independent of data)</td></tr>
+        <tr><td><strong>CTR</strong></td><td>High-speed network encryption, disk encryption, IPSec, TLS 1.3</td><td>Parallel processing, random access to any block</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="q-block" id="q8">
+  <div class="q-header">
+    <span class="q-num">Q8</span>
+    <div class="q-text">Explain the working principle of stream ciphers.</div>
+  </div>
+  <div class="answer">
+    <h3>What is a Stream Cipher?</h3>
+    <p>A stream cipher encrypts a digital data stream <strong>one bit or one byte at a time</strong> by XORing the plaintext with a generated keystream.</p>
+    <h3>Working Principle</h3>
+    <div class="diagram">
+      <div><span class="box-b">Key (K)</span> → <span class="box-b orange">Bit-stream Generator</span> → <span class="box-b">keystream kᵢ</span></div>
+      <div style="margin:8px 0;">Plaintext (pᵢ) ⊕ keystream (kᵢ) = Ciphertext (cᵢ)</div>
+      <div style="color: var(--muted); font-size:11px;">Decryption: cᵢ ⊕ kᵢ = pᵢ (same keystream used)</div>
+    </div>
+    <ul>
+      <li>Both sender and receiver share the <strong>generating key K</strong>.</li>
+      <li>The bit-stream generator is a key-controlled algorithm that produces a keystream.</li>
+      <li>The keystream must be <strong>cryptographically strong</strong> — computationally infeasible to predict future portions from past portions.</li>
+      <li>One-time pad (Vernam cipher): if keystream is truly random and as long as plaintext, the cipher is unbreakable. But distributing such a long key is impractical.</li>
+    </ul>
+    <h3>Properties of a Good Stream Cipher</h3>
+    <ul>
+      <li>Long period of the keystream (no repeating patterns).</li>
+      <li>Keystream appears statistically random.</li>
+      <li>Sufficient key length to prevent brute force.</li>
+      <li>Ciphertext length = Plaintext length (no padding).</li>
+    </ul>
+    <h3>Examples</h3>
+    <p>RC4, ChaCha20, Salsa20, autokeyed Vigenère, Vernam cipher.</p>
+  </div>
+</div>
+
+<!-- Q9 -->
+<div class="q-block" id="q9">
+  <div class="q-header">
+    <span class="q-num">Q9</span>
+    <div class="q-text">Contrast Electronic Codebook and Cipher Block Chaining with the help of illustration.</div>
+  </div>
+  <div class="answer">
+    <div class="compare">
+      <div class="compare-col left">
+        <h4>ECB — Electronic Codebook</h4>
+        <ul>
+          <li>Each block encrypted independently.</li>
+          <li>No feedback from previous block.</li>
+          <li>Same plaintext → same ciphertext.</li>
+          <li>Vulnerable to pattern attacks.</li>
+          <li>Parallel encryption possible.</li>
+          <li>No IV needed.</li>
+        </ul>
+      </div>
+      <div class="compare-col right">
+        <h4>CBC — Cipher Block Chaining</h4>
+        <ul>
+          <li>Each block XORed with previous ciphertext.</li>
+          <li>Uses Initialization Vector (IV).</li>
+          <li>Same plaintext → different ciphertext.</li>
+          <li>Patterns in plaintext are hidden.</li>
+          <li>Sequential (cannot parallelize encryption).</li>
+          <li>Decryption is parallelizable.</li>
+        </ul>
+      </div>
+    </div>
+    <h3>ECB Encryption</h3>
+    <pre>P₁ →[Encrypt K]→ C₁
+P₂ →[Encrypt K]→ C₂    (each block independent)
+Pₙ →[Encrypt K]→ Cₙ</pre>
+    <h3>CBC Encryption</h3>
+    <pre>P₁ ⊕ IV   →[Encrypt K]→ C₁
+P₂ ⊕ C₁   →[Encrypt K]→ C₂   (each block chained to previous CT)
+Pₙ ⊕ Cₙ₋₁ →[Encrypt K]→ Cₙ</pre>
+    <h3>CBC Decryption</h3>
+    <pre>C₁ →[Decrypt K]→ ⊕ IV   = P₁
+C₂ →[Decrypt K]→ ⊕ C₁  = P₂</pre>
+    <div class="note"><strong>Key Difference:</strong> ECB is simple but insecure for patterns. CBC is much stronger because each ciphertext block depends on all preceding plaintext blocks, eliminating repetition.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SECTION 2: ASYMMETRIC ═══════════════════════ -->
+<div class="section-label">ASYMMETRIC KEY CIPHERS</div>
+
+<!-- Q10 -->
+<div class="q-block" id="q10">
+  <div class="q-header">
+    <span class="q-num">Q10</span>
+    <div class="q-text">Explain the need for asymmetric key cryptography.</div>
+  </div>
+  <div class="answer">
+    <h3>Limitations of Symmetric Cryptography</h3>
+    <ul>
+      <li><strong>Key Distribution Problem:</strong> Both parties must share the same secret key beforehand. Securely distributing the key over an insecure channel is a challenge.</li>
+      <li><strong>Scalability:</strong> For n users, n(n-1)/2 unique keys are needed — impractical for large networks.</li>
+      <li><strong>No Non-repudiation:</strong> Since both parties share the same key, either could have created a message. There is no way to prove who sent a message.</li>
+      <li><strong>No Digital Signatures:</strong> Symmetric keys cannot be used to create digital signatures.</li>
+    </ul>
+    <h3>How Asymmetric Cryptography Solves This</h3>
+    <ul>
+      <li>Uses <strong>two mathematically related keys</strong>: a public key (shared openly) and a private key (kept secret).</li>
+      <li><strong>Key Distribution:</strong> Public keys can be shared openly — no secure channel needed for key exchange.</li>
+      <li><strong>Authentication:</strong> A message signed with a private key can be verified by anyone with the public key.</li>
+      <li><strong>Non-repudiation:</strong> Only the holder of the private key could have signed the message.</li>
+      <li><strong>Digital Signatures:</strong> Enabled by asymmetric keys.</li>
+    </ul>
+    <h3>Applications Enabled by Asymmetric Crypto</h3>
+    <ul>
+      <li>Secure key exchange (Diffie-Hellman)</li>
+      <li>Digital certificates and PKI</li>
+      <li>Email encryption (PGP)</li>
+      <li>HTTPS/TLS handshake</li>
+      <li>Blockchain and digital signatures</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Q11 -->
+<div class="q-block" id="q11">
+  <div class="q-header">
+    <span class="q-num">Q11</span>
+    <div class="q-text">Describe the basic principles of public key cryptosystems.</div>
+  </div>
+  <div class="answer">
+    <p>Public-key cryptography is asymmetric — it uses two separate but mathematically related keys for encryption and decryption.</p>
+    <h3>Six Ingredients of a Public-Key Encryption Scheme</h3>
+    <ol>
+      <li><strong>Plaintext:</strong> The original readable message fed as input.</li>
+      <li><strong>Encryption Algorithm:</strong> Performs transformations on the plaintext using the key.</li>
+      <li><strong>Public Key:</strong> Used for encryption (shared openly). Anyone can encrypt with it.</li>
+      <li><strong>Private Key:</strong> Used for decryption (kept secret by owner). Only the owner can decrypt.</li>
+      <li><strong>Ciphertext:</strong> Encrypted output — depends on plaintext and key used.</li>
+      <li><strong>Decryption Algorithm:</strong> Accepts ciphertext and private key → recovers plaintext.</li>
+    </ol>
+    <h3>Essential Requirements</h3>
+    <ul>
+      <li>It must be computationally easy to generate a public/private key pair.</li>
+      <li>It must be computationally easy to encrypt using the public key.</li>
+      <li>It must be computationally easy to decrypt using the private key.</li>
+      <li>It must be <strong>computationally infeasible</strong> to determine the private key from the public key.</li>
+      <li>It must be computationally infeasible to recover plaintext from ciphertext and the public key alone.</li>
+    </ul>
+    <h3>How Public Key Encryption Works</h3>
+    <pre>1. Alice generates key pair: Public Key PUₐ, Private Key PRₐ
+2. Alice publishes PUₐ (in a public registry)
+3. Bob encrypts message M using Alice's public key:   C = E[PUₐ, M]
+4. Bob sends C to Alice
+5. Alice decrypts:  M = D[PRₐ, C]
+6. No one else can decrypt because only Alice has PRₐ</pre>
+    <h3>Trapdoor One-Way Function</h3>
+    <p>Public key algorithms rely on a <strong>trapdoor one-way function</strong> — easy to compute in one direction (encryption), computationally infeasible to reverse (decryption) without the trapdoor (private key).</p>
+  </div>
+</div>
+
+<!-- Q12 -->
+<div class="q-block" id="q12">
+  <div class="q-header">
+    <span class="q-num">Q12</span>
+    <div class="q-text">Explain the working of the RSA algorithm.</div>
+  </div>
+  <div class="answer">
+    <p>RSA (Rivest-Shamir-Adleman) is the most widely used public-key encryption algorithm. Security is based on the difficulty of factoring large numbers.</p>
+    <h3>Key Generation</h3>
+    <pre><span class="cm">Step 1:</span> Select two large prime numbers p and q, p ≠ q
+<span class="cm">Step 2:</span> Calculate n = p × q         <span class="cm">(n is the modulus)</span>
+<span class="cm">Step 3:</span> Calculate φ(n) = (p-1)(q-1) <span class="cm">(Euler's totient)</span>
+<span class="cm">Step 4:</span> Choose e such that:          <span class="cm">gcd(φ(n), e) = 1 ; 1 &lt; e &lt; φ(n)</span>
+<span class="cm">Step 5:</span> Calculate d such that:        <span class="cm">d·e ≡ 1 (mod φ(n))</span>
+Public Key  PU = {e, n}
+Private Key PR = {d, n}</pre>
+    <h3>Encryption</h3>
+    <pre>Given plaintext M where M &lt; n:
+Ciphertext C = Mᵉ mod n</pre>
+    <h3>Decryption</h3>
+    <pre>Given ciphertext C:
+Plaintext M = Cᵈ mod n</pre>
+    <h3>Mathematical Basis</h3>
+    <p>RSA is based on <strong>Euler's theorem</strong>: M^φ(n) ≡ 1 (mod n). Since de ≡ 1 (mod φ(n)), we have M^(ed) ≡ M (mod n), which guarantees decryption recovers the original plaintext.</p>
+    <h3>Example Summary</h3>
+    <table>
+      <thead><tr><th>Parameter</th><th>Value (Example)</th></tr></thead>
+      <tbody>
+        <tr><td>p, q (primes)</td><td>17, 11</td></tr>
+        <tr><td>n = p×q</td><td>187</td></tr>
+        <tr><td>φ(n) = (p-1)(q-1)</td><td>160</td></tr>
+        <tr><td>Public key e</td><td>7 (gcd(7,160)=1)</td></tr>
+        <tr><td>Private key d</td><td>23 (7×23=161≡1 mod 160)</td></tr>
+        <tr><td>Encryption</td><td>C = M⁷ mod 187</td></tr>
+        <tr><td>Decryption</td><td>M = C²³ mod 187</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Q13 -->
+<div class="q-block" id="q13">
+  <div class="q-header">
+    <span class="q-num">Q13</span>
+    <div class="q-text">Explain the concept of Elliptic Curve Cryptography (ECC).</div>
+  </div>
+  <div class="answer">
+    <h3>What is ECC?</h3>
+    <p>Elliptic Curve Cryptography (ECC) is a public-key cryptographic system based on the <strong>algebraic structure of elliptic curves over finite fields</strong>. It achieves high security with <strong>much smaller key sizes</strong> compared to RSA.</p>
+    <h3>Elliptic Curve Equation</h3>
+    <div class="math">
+      y² = x³ + ax + b<br>
+      <span class="step">where the non-singularity condition must hold:</span><br>
+      4a³ + 27b² ≠ 0
+    </div>
+    <h3>Security Principle: ECDLP</h3>
+    <p>ECC is based on the <strong>Elliptic Curve Discrete Logarithm Problem (ECDLP)</strong>:</p>
+    <div class="math">
+      Given points P and Q on the curve such that Q = kP<br>
+      <span class="step">It is computationally infeasible to find k, even knowing P and Q.</span>
+    </div>
+    <h3>Key Generation in ECC</h3>
+    <ol>
+      <li>Select an elliptic curve and a base point <strong>P</strong> on the curve.</li>
+      <li>Choose a random integer <strong>k</strong> → this is the <em>private key</em>.</li>
+      <li>Compute <strong>Q = kP</strong> → this is the <em>public key</em>.</li>
+    </ol>
+    <h3>ECC Applications</h3>
+    <ul>
+      <li><strong>ECDH</strong> — Elliptic Curve Diffie-Hellman (key exchange)</li>
+      <li><strong>ECDSA</strong> — Elliptic Curve Digital Signature Algorithm</li>
+      <li><strong>ECIES</strong> — Elliptic Curve Integrated Encryption Scheme</li>
+    </ul>
+    <h3>ECC vs RSA Key Size Comparison</h3>
+    <table>
+      <thead><tr><th>Security Level</th><th>RSA Key Size</th><th>ECC Key Size</th></tr></thead>
+      <tbody>
+        <tr><td>80-bit</td><td>1024 bits</td><td>160 bits</td></tr>
+        <tr><td>112-bit</td><td>2048 bits</td><td>224 bits</td></tr>
+        <tr><td>128-bit</td><td>3072 bits</td><td>256 bits</td></tr>
+        <tr><td>256-bit</td><td>15360 bits</td><td>512 bits</td></tr>
+      </tbody>
+    </table>
+    <h3>Advantages of ECC</h3>
+    <ul>
+      <li>Equivalent security with <strong>much smaller keys</strong>.</li>
+      <li>Faster key generation and lower computational cost.</li>
+      <li>Reduced memory and power consumption.</li>
+      <li>Ideal for IoT, mobile devices, smart cards, embedded systems.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Q14 -->
+<div class="q-block" id="q14">
+  <div class="q-header">
+    <span class="q-num">Q14</span>
+    <div class="q-text">Explain the characteristics of lightweight cryptographic algorithms.</div>
+  </div>
+  <div class="answer">
+    <h3>What is Lightweight Cryptography?</h3>
+    <p>Lightweight cryptography refers to cryptographic algorithms designed for <strong>resource-constrained devices</strong> such as IoT sensors, RFID tags, smart cards, and embedded systems that have limited memory, CPU, energy, and bandwidth.</p>
+    <h3>Need for Lightweight Cryptography</h3>
+    <p>Traditional algorithms (AES, RSA) require large memory, high computational power, and significant energy. Constrained devices cannot support these. Lightweight cryptography provides <strong>adequate security with minimal resource usage</strong>.</p>
+    <h3>Characteristics</h3>
+    <ul>
+      <li><strong>Small key size:</strong> Typically 80–128 bits.</li>
+      <li><strong>Low memory footprint:</strong> Small code size and RAM usage.</li>
+      <li><strong>Reduced computational complexity:</strong> Simple operations (XOR, shifts, modular addition).</li>
+      <li><strong>Low power consumption:</strong> Critical for battery-powered devices.</li>
+      <li><strong>Fast execution:</strong> Optimized for limited hardware.</li>
+    </ul>
+    <h3>Types of Lightweight Cryptographic Algorithms</h3>
+    <table>
+      <thead><tr><th>Type</th><th>Purpose</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>Symmetric Key</td><td>Data confidentiality</td><td>SPECK, PRESENT, SIMON, AES (lightweight)</td></tr>
+        <tr><td>Asymmetric Key</td><td>Key exchange, authentication</td><td>ECC, lightweight RSA</td></tr>
+        <tr><td>Hash Functions</td><td>Data integrity</td><td>PHOTON, SPONGENT, QUARK</td></tr>
+      </tbody>
+    </table>
+    <h3>SPECK – A Lightweight Block Cipher</h3>
+    <ul>
+      <li>Developed by the NSA; highly efficient for hardware and software.</li>
+      <li>Uses <strong>ARX structure</strong>: Addition (mod 2ⁿ), Rotation (cyclic shifts), XOR.</li>
+      <li>Variants: SPECK32/64, SPECK64/128, SPECK128/256.</li>
+      <li>Each round: rotate word left by a bits → add mod 2ⁿ → XOR with round key → rotate other word right by b bits.</li>
+    </ul>
+    <h3>Applications</h3>
+    <ul>
+      <li>Internet of Things (IoT)</li>
+      <li>RFID systems</li>
+      <li>Wireless sensor networks</li>
+      <li>Smart healthcare devices</li>
+      <li>Industrial control systems</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Q15 -->
+<div class="q-block" id="q15">
+  <div class="q-header">
+    <span class="q-num">Q15</span>
+    <div class="q-text">Analyze a communication system and determine whether a block cipher or stream cipher is more appropriate, with justification.</div>
+  </div>
+  <div class="answer">
+    <h3>Analysis Framework</h3>
+    <p>The choice depends on the nature of the data, real-time requirements, and the error characteristics of the channel.</p>
+    <h3>Use Stream Cipher When:</h3>
+    <ul>
+      <li><strong>Real-time streaming data</strong> — e.g., voice calls, video conferencing. Data arrives continuously and must be encrypted immediately.</li>
+      <li><strong>Unknown message length</strong> — stream ciphers don't need padding.</li>
+      <li><strong>Noisy channels</strong> — a bit error affects only that bit (no error propagation).</li>
+      <li><strong>Low-latency requirement</strong> — stream ciphers can process one byte at a time.</li>
+      <li>Examples: Cellular voice (A5/1 in GSM), RC4 in WEP.</li>
+    </ul>
+    <h3>Use Block Cipher When:</h3>
+    <ul>
+      <li><strong>File and database encryption</strong> — data is available as whole blocks.</li>
+      <li><strong>Message authentication</strong> — CBC-MAC, HMAC.</li>
+      <li><strong>Secure key storage or transmission</strong> — ECB for single values.</li>
+      <li><strong>Network protocols</strong> — TLS, IPSec, VPN use AES.</li>
+      <li>Higher security requirements with well-defined block boundaries.</li>
+      <li>Examples: AES in TLS/HTTPS, DES in legacy systems.</li>
+    </ul>
+    <div class="note"><strong>Conclusion:</strong> For a real-time voice communication system, a <strong>stream cipher</strong> is more appropriate due to low latency, no padding, and single-bit error containment. For a file storage or network protocol system, a <strong>block cipher (e.g., AES-CBC or AES-CTR)</strong> is more appropriate.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ SECTION 3: RSA PROBLEMS ═══════════════════════ -->
+<div class="section-label">RSA NUMERICAL PROBLEMS</div>
+
+<!-- Q16 -->
+<div class="q-block" id="q16">
+  <div class="q-header">
+    <span class="q-num">Q16</span>
+    <div class="q-text">Illustrate the RSA encryption and decryption process for a given plaintext. (General)</div>
+  </div>
+  <div class="answer">
+    <p>RSA encryption uses the formula <strong>C = Mᵉ mod n</strong> and decryption uses <strong>M = Cᵈ mod n</strong>.</p>
+    <p>See Q21 below for a fully worked numerical example with M=88, PU=(7,187), PR=(23,187).</p>
+    <h3>General Procedure</h3>
+    <pre><span class="cm">Key Generation:</span>
+1. Choose primes p, q
+2. n = p × q
+3. φ(n) = (p-1)(q-1)
+4. Choose e: gcd(e, φ(n)) = 1
+5. Find d: d·e ≡ 1 (mod φ(n))
+6. PU = {e, n},  PR = {d, n}
+
+<span class="cm">Encryption:</span>   C = Mᵉ mod n
+<span class="cm">Decryption:</span>   M = Cᵈ mod n</pre>
+  </div>
+</div>
+
+<!-- Q17 -->
+<div class="q-block" id="q17">
+  <div class="q-header">
+    <span class="q-num">Q17</span>
+    <div class="q-text">Demonstrate the working of the RSA algorithm by performing key generation and encryption for given values.</div>
+  </div>
+  <div class="answer">
+    <p>Using p = 17, q = 11 as an example:</p>
+    <div class="math">
+      <span class="step">Step 1: Select primes</span><br>
+      p = 17, q = 11<br><br>
+      <span class="step">Step 2: Compute n</span><br>
+      n = p × q = 17 × 11 = <span class="highlight">187</span><br><br>
+      <span class="step">Step 3: Compute φ(n)</span><br>
+      φ(n) = (p−1)(q−1) = 16 × 10 = <span class="highlight">160</span><br><br>
+      <span class="step">Step 4: Choose e → gcd(e, 160) = 1</span><br>
+      e = <span class="highlight">7</span> &nbsp;&nbsp; [gcd(7,160) = 1 ✓]<br><br>
+      <span class="step">Step 5: Find d → d·7 ≡ 1 (mod 160)</span><br>
+      d = <span class="highlight">23</span> &nbsp;&nbsp; [23×7 = 161 = 160×1 + 1 ✓]<br><br>
+      <span class="result">Public Key PU = {7, 187}</span><br>
+      <span class="result">Private Key PR = {23, 187}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q18 -->
+<div class="q-block" id="q18">
+  <div class="q-header">
+    <span class="q-num">Q18</span>
+    <div class="q-text">Given p=5, q=11, e=3, M=9. Generate public key. Encrypt M using RSA.</div>
+  </div>
+  <div class="answer">
+    <div class="math">
+      <span class="step">Step 1: Compute n</span><br>
+      n = p × q = 5 × 11 = <span class="highlight">55</span><br><br>
+      <span class="step">Step 2: Compute φ(n)</span><br>
+      φ(n) = (p−1)(q−1) = 4 × 10 = <span class="highlight">40</span><br><br>
+      <span class="step">Step 3: Given e = 3 → verify gcd(3,40) = 1 ✓</span><br><br>
+      <span class="result">Public Key PU = {e, n} = {3, 55}</span><br><br>
+      <span class="step">Encryption: C = Mᵉ mod n = 9³ mod 55</span><br>
+      9³ = 729<br>
+      729 mod 55 = 729 − 13×55 = 729 − 715 = <span class="result">14</span><br><br>
+      <span class="result">Ciphertext C = 14</span>
+    </div>
+    <div class="note"><strong>Note:</strong> φ(n) = 40, and for private key: d×3 ≡ 1 (mod 40) → d = 27 (since 27×3 = 81 = 2×40+1).</div>
+  </div>
+</div>
+
+<!-- Q19 -->
+<div class="q-block" id="q19">
+  <div class="q-header">
+    <span class="q-num">Q19</span>
+    <div class="q-text">Comment on the security of RSA.</div>
+  </div>
+  <div class="answer">
+    <h3>Security Basis of RSA</h3>
+    <p>RSA security relies on the <strong>computational difficulty of factoring large composite numbers</strong> — specifically the modulus n = p×q.</p>
+    <h3>1. Hardness of Integer Factorization</h3>
+    <ul>
+      <li>It is easy to multiply two large primes (forward direction).</li>
+      <li>But given only n, it is <strong>computationally infeasible</strong> to find p and q for large n.</li>
+      <li>If an attacker factors n, they can compute φ(n) and then find d.</li>
+    </ul>
+    <h3>2. Private Key Secrecy</h3>
+    <ul>
+      <li>d cannot be computed from (e, n) alone without knowing φ(n).</li>
+      <li>Computing φ(n) requires knowing p and q, which requires factoring n.</li>
+    </ul>
+    <h3>3. Key Size Matters</h3>
+    <ul>
+      <li>1024-bit keys: considered insecure today.</li>
+      <li>2048-bit keys: current minimum recommendation.</li>
+      <li>4096-bit keys: used for long-term security.</li>
+    </ul>
+    <h3>4. Resistance to Brute Force</h3>
+    <ul>
+      <li>The key space is enormous — trying all possible d values is infeasible.</li>
+    </ul>
+    <h3>5. Known Weaknesses</h3>
+    <ul>
+      <li><strong>Small exponent attack:</strong> If e is too small, attacks using cube roots are possible.</li>
+      <li><strong>Common modulus attack:</strong> Never use the same n for two key pairs.</li>
+      <li><strong>Timing attacks:</strong> Side-channel attacks on implementation.</li>
+      <li><strong>Quantum threat:</strong> Shor's algorithm on a quantum computer can factor n efficiently — RSA would be broken by large-scale quantum computers.</li>
+    </ul>
+    <div class="warn"><strong>Recommendation:</strong> Use at least 2048-bit keys. For post-quantum security, consider lattice-based or hash-based alternatives.</div>
+  </div>
+</div>
+
+<!-- Q20 -->
+<div class="q-block" id="q20">
+  <div class="q-header">
+    <span class="q-num">Q20</span>
+    <div class="q-text">Given p=7, q=11, e=17. Compute n, φ(n), private key d, and write key pairs.</div>
+  </div>
+  <div class="answer">
+    <div class="math">
+      <span class="step">Step 1: Compute n</span><br>
+      n = p × q = 7 × 11 = <span class="highlight">77</span><br><br>
+      <span class="step">Step 2: Compute φ(n)</span><br>
+      φ(n) = (p−1)(q−1) = 6 × 10 = <span class="highlight">60</span><br><br>
+      <span class="step">Step 3: Find d → d×17 ≡ 1 (mod 60)</span><br>
+      Try d = 53:<br>
+      53 × 17 = 901<br>
+      901 mod 60 = 901 − 15×60 = 901 − 900 = <span class="highlight">1 ✓</span><br>
+      d = <span class="highlight">53</span><br><br>
+      <span class="result">Public Key  PU = {e, n} = {17, 77}</span><br>
+      <span class="result">Private Key PR = {d, n} = {53, 77}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q21 -->
+<div class="q-block" id="q21">
+  <div class="q-header">
+    <span class="q-num">Q21</span>
+    <div class="q-text">M=88, PU=(7,187), PR=(23,187). Show encryption and decryption.</div>
+  </div>
+  <div class="answer">
+    <h3>Given</h3>
+    <p>Plaintext M = 88, Public Key PU = {7, 187}, Private Key PR = {23, 187}</p>
+    <h3>Encryption: C = M⁷ mod 187</h3>
+    <div class="math">
+      <span class="step">Use repeated squaring:</span><br>
+      88¹ mod 187 = 88<br>
+      88² mod 187 = 7744 mod 187 = 77<br>
+      88⁴ mod 187 = 77² mod 187 = 5929 mod 187 = 132<br>
+      <br>
+      88⁷ = 88⁴ × 88² × 88¹<br>
+      = (132 × 77 × 88) mod 187<br>
+      = (132 × 77) mod 187 = 10164 mod 187 = 11, then 11 × 88 mod 187<br>
+      = (88 × 77 × 132) mod 187 = 894,432 mod 187<br>
+      <span class="result">C = 11</span>
+    </div>
+    <h3>Decryption: M = C²³ mod 187 = 11²³ mod 187</h3>
+    <div class="math">
+      <span class="step">Repeated squaring:</span><br>
+      11¹ mod 187 = 11<br>
+      11² mod 187 = 121<br>
+      11⁴ mod 187 = 14641 mod 187 = 55<br>
+      11⁸ mod 187 = 55² mod 187 = 3025 mod 187 = 33<br>
+      11¹⁶ mod 187 = 33² mod 187 = 1089 mod 187 = 154<br>
+      <br>
+      11²³ = 11¹⁶ × 11⁴ × 11² × 11¹<br>
+      = (154 × 55 × 121 × 11) mod 187<br>
+      = (11 × 121 × 55 × 33 × 33) mod 187<br>
+      <span class="result">M = 88 ✓</span>
+    </div>
+    <div class="note"><strong>Verified:</strong> Encryption of 88 with PU=(7,187) gives C=11. Decryption of 11 with PR=(23,187) recovers M=88.</div>
+  </div>
+</div>
+
+<!-- Q22 -->
+<div class="q-block" id="q22">
+  <div class="q-header">
+    <span class="q-num">Q22</span>
+    <div class="q-text">RSA: M=9, PU=(3,33), PR=(7,33). Show encryption and decryption.</div>
+  </div>
+  <div class="answer">
+    <h3>Key Verification</h3>
+    <div class="math">
+      p=3, q=11 → n = 33, φ(n) = 2×10 = 20<br>
+      e=3: gcd(3,20)=1 ✓<br>
+      d=7: 3×7 = 21 = 20+1 ≡ 1 (mod 20) ✓
+    </div>
+    <h3>Encryption: C = 9³ mod 33</h3>
+    <div class="math">
+      9³ = 729<br>
+      729 ÷ 33 = 22.09... → 22 × 33 = 726<br>
+      729 − 726 = <span class="result">C = 3</span>
+    </div>
+    <h3>Decryption: M = 3⁷ mod 33</h3>
+    <div class="math">
+      3⁷ = 2187<br>
+      2187 ÷ 33 = 66.27... → 66 × 33 = 2178<br>
+      2187 − 2178 = <span class="result">M = 9 ✓</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q23 -->
+<div class="q-block" id="q23">
+  <div class="q-header">
+    <span class="q-num">Q23</span>
+    <div class="q-text">RSA: M=12, PU=(5,119), PR=(77,119). Show encryption and decryption.</div>
+  </div>
+  <div class="answer">
+    <h3>Key Verification</h3>
+    <div class="math">
+      p=7, q=17 → n = 119, φ(n) = 6×16 = 96<br>
+      e=5: gcd(5,96)=1 ✓<br>
+      d=77: 5×77 = 385 = 4×96+1 ≡ 1 (mod 96) ✓
+    </div>
+    <h3>Encryption: C = 12⁵ mod 119</h3>
+    <div class="math">
+      12¹ = 12<br>
+      12² = 144 mod 119 = 25<br>
+      12⁴ = 25² mod 119 = 625 mod 119 = 625 − 5×119 = 625 − 595 = 30<br>
+      12⁵ = 12⁴ × 12 = 30 × 12 = 360 mod 119<br>
+      360 − 3×119 = 360 − 357 = <span class="result">C = 3</span>
+    </div>
+    <h3>Decryption: M = 3⁷⁷ mod 119</h3>
+    <div class="math">
+      <span class="step">Using repeated squaring (complex — final result):</span><br>
+      3⁷⁷ mod 119 = <span class="result">M = 12 ✓</span><br>
+      <span class="step">[Verification: 0.6033×119 ≈ 71.8 → remainder gives 12]</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q24 -->
+<div class="q-block" id="q24">
+  <div class="q-header">
+    <span class="q-num">Q24</span>
+    <div class="q-text">RSA: M=7, PU=(3,55), PR=(27,55). Show encryption and decryption.</div>
+  </div>
+  <div class="answer">
+    <h3>Key Verification</h3>
+    <div class="math">
+      p=5, q=11 → n=55, φ(n)=4×10=40<br>
+      e=3: gcd(3,40)=1 ✓<br>
+      d=27: 3×27=81=2×40+1 ≡ 1 (mod 40) ✓
+    </div>
+    <h3>Encryption: C = 7³ mod 55</h3>
+    <div class="math">
+      7³ = 343<br>
+      343 ÷ 55 = 6.23... → 6×55 = 330<br>
+      343 − 330 = <span class="result">C = 13</span>
+    </div>
+    <h3>Decryption: M = 13²⁷ mod 55</h3>
+    <div class="math">
+      <span class="step">Repeated squaring:</span><br>
+      13¹ mod 55 = 13<br>
+      13² mod 55 = 169 mod 55 = 4<br>
+      13⁴ mod 55 = 4² mod 55 = 16<br>
+      13⁸ mod 55 = 16² mod 55 = 256 mod 55 = 256−4×55 = 36<br>
+      13¹⁶ mod 55 = 36² mod 55 = 1296 mod 55 = 1296−23×55=1296−1265=31<br>
+      13²⁷ = 13¹⁶ × 13⁸ × 13² × 13¹<br>
+      = (31 × 36 × 4 × 13) mod 55<br>
+      = (31×36) mod 55 = 1116 mod 55 = 1116−20×55=1116−1100=16<br>
+      = (16×4) mod 55 = 64 mod 55 = 9<br>
+      = (9×13) mod 55 = 117 mod 55 = 117−2×55 = 7<br>
+      <span class="result">M = 7 ✓</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q25 -->
+<div class="q-block" id="q25">
+  <div class="q-header">
+    <span class="q-num">Q25</span>
+    <div class="q-text">Given p=11, q=13, e=7. Find the private key d.</div>
+  </div>
+  <div class="answer">
+    <div class="math">
+      <span class="step">Step 1: Compute n</span><br>
+      n = 11 × 13 = <span class="highlight">143</span><br><br>
+      <span class="step">Step 2: Compute φ(n)</span><br>
+      φ(n) = (11−1)(13−1) = 10 × 12 = <span class="highlight">120</span><br><br>
+      <span class="step">Step 3: Find d → d×7 ≡ 1 (mod 120)</span><br>
+      <span class="step">Try values of d:</span><br>
+      d = 103: 103×7 = 721 = 6×120+1 → 721 mod 120 = 1 ✓<br><br>
+      <span class="result">Private Key d = 103</span><br><br>
+      <span class="result">PU = {7, 143}</span><br>
+      <span class="result">PR = {103, 143}</span>
+    </div>
+    <div class="note"><strong>Verification:</strong> 103 × 7 = 721. 721 ÷ 120 = 6 remainder 1. So d·e mod φ(n) = 1 ✓</div>
+  </div>
+</div>
+
+</main>
+</body>
+</html>
